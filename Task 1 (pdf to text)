@@ -1,0 +1,15 @@
+import PyPDF2
+pdf_file=open(r"C:\Users\abc\Desktop\Reopen, Resume... Rebooting the Campus.pdf","rb")
+
+read=PyPDF2.PdfFileReader(pdf_file)
+n=read.numPages
+print(int(n))
+file=open(r"C:\Users\abc\Desktop\output.txt","a")
+
+for i in range(n):
+    print(i)
+    pageObj = read.getPage(i)
+    file.write(pageObj.extractText())
+    i+=1
+
+file.close()
