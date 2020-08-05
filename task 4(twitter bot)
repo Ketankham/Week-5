@@ -1,0 +1,34 @@
+from selenium import webdriver
+#from selenium.webdriver.common.keys import keys
+from selenium import*
+userid=input("Enter ur twitter username: ")
+passkey=input("Enter your password: ")
+hashtag=input("Enter the hagshtag # you wannt to tweet to ")
+
+
+chrome_browser=webdriver.Chrome(executable_path=r"C:/Users/abc/PycharmProjects/untitled2/venv/chromedriver.exe")
+chrome_browser.maximize_window()
+chrome_browser.implicitly_wait(20)
+#print(chrome_browser)
+chrome_browser.get("https://www.twitter.com")
+login=chrome_browser.find_element_by_xpath('//*[@id="react-root"]/div/div/div/main/div/div/div/div[1]/div/a[2]')
+login.click()
+username=chrome_browser.find_element_by_xpath('//*[@id="react-root"]/div/div/div[2]/main/div/div/div[1]/form/div/div[1]/label/div/div[2]/div/input')
+
+username.send_keys(userid)
+password=chrome_browser.find_element_by_xpath('//*[@id="react-root"]/div/div/div[2]/main/div/div/div[1]/form/div/div[2]/label/div/div[2]/div/input')
+
+password.send_keys(passkey)
+log_in=chrome_browser.find_element_by_xpath('//*[@id="react-root"]/div/div/div[2]/main/div/div/div[1]/form/div/div[3]/div/div/span/span')
+log_in.click()
+chrome_browser.implicitly_wait(10)
+
+#getting the hastags of your choice
+
+
+
+
+tweet_click=chrome_browser.find_element_by_xpath('//*[@id="react-root"]/div/div/div[2]/main/div/div/div/div/div/div[2]/div/div[2]/div[1]/div/div/div/div[2]/div[1]/div/div/div/div/div/div/div/div/div/div[1]/div/div/div/div[2]/div/div/div/div')
+
+tweet_click.send_keys("Hi guys . what do you think about #"+hashtag+"?")
+
